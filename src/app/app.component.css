@@ -1,0 +1,108 @@
+.main-border {
+  height: 500px;
+  width: 450px;
+  margin: auto;
+  position: relative;
+  top: 100px;
+  border-style: red 5px solid;
+}
+.game-nav {
+  width: 95%;
+  height: 55px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.game-nav button {
+  width: 33px;
+  height: 33px;
+}
+
+.game-nav div {
+  width: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-display {
+  width: 95%;
+  height: 85%;
+  background-color: #bcac9e;
+  margin: auto;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.scores {
+  width: 43% !important;
+  display: flex !important;
+  flex-direction: column;
+  text-align: center;
+  height: 40px;
+  background-color: #b8aea1;
+  border-radius: 5px;
+}
+.scores p,
+.scores h3 {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  font-family: system-ui;
+}
+.scores p {
+  font-size: 0.7em;
+  font-weight: 600 !important;
+}
+.score-sector {
+  width: 45% !important;
+}
+.button-sector {
+  width: 20% !important;
+}
+.button-sector button {
+  border-radius: 5px;
+  border: none;
+  background-color: orange;
+}
+.button-sector button:first-child {
+  padding: 2px 0px;
+}
+.undo {
+  width: 30px;
+}
+.restart {
+  width: 24px;
+  padding: 4px 0px;
+}
+.block {
+  height: 100px;
+  width: 100px;
+  background-color: #cac1b5;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.two {
+  font-size: 3.5em;
+  font-family: cursive;
+  font-weight: 600;
+  color: #746a60;
+  background-color: #eee4da;
+  padding-top: 6px;
+  height: 94%;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+}
