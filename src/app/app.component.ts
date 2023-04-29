@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +10,7 @@ export class AppComponent {
   color = 'white';
 
   grids: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  gridSaver: number[] = [];
 
   ngOnInit() {
     let beggin = 0;
@@ -25,6 +26,7 @@ export class AppComponent {
 
   @HostListener('document:keydown.arrowDown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
+    this.gridSaver = [...this.grids];
     // =========================================== 1x1 is true =====================================Head
     //if only 1x1 is true
     if (this.grids[0] && !this.grids[4] && !this.grids[8] && !this.grids[12]) {
@@ -1054,34 +1056,14 @@ export class AppComponent {
         this.grids[11] = 0;
       }
     }
-
-
-    
+    this.getNumber();
     // =========================================== 3x1 is true =====================================Bottom
   }
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////UUUUUPPPPPPPPSSSSSSSIIIIIIIIIIDDDDDDDDDEEEEEEEEEEE///////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
   @HostListener('document:keydown.arrowUp', ['$event'])
   onKeyUp(event: KeyboardEvent) {
+    this.gridSaver = [...this.grids];
+
     // =========================================== 1x1 is true =====================================Head
     //if only 1x1 is true
     if (this.grids[12] && !this.grids[8] && !this.grids[4] && !this.grids[0]) {
@@ -2111,14 +2093,23 @@ export class AppComponent {
         this.grids[7] = 0;
       }
     }
+    this.getNumber();
+
     // =========================================== 3x1 is true =====================================Bottom
   }
 
   @HostListener('document:keydown.arrowLeft', ['$event'])
   onKeyLeft(event: KeyboardEvent) {
+    this.gridSaver = [...this.grids];
+
     // =========================================== 1x1 is true =====================================Head
     //if only 1x1 is true
-    if (this.grids[15] && !this.grids[14] && !this.grids[13] && !this.grids[12]) {
+    if (
+      this.grids[15] &&
+      !this.grids[14] &&
+      !this.grids[13] &&
+      !this.grids[12]
+    ) {
       this.grids[12] = this.grids[15];
       this.grids[15] = 0;
     }
@@ -2166,7 +2157,10 @@ export class AppComponent {
       this.grids[13] &&
       this.grids[12]
     ) {
-      if (this.grids[15] == this.grids[14] && this.grids[13] == this.grids[12]) {
+      if (
+        this.grids[15] == this.grids[14] &&
+        this.grids[13] == this.grids[12]
+      ) {
         this.grids[12] += this.grids[13];
         this.grids[13] = this.grids[14] + this.grids[15];
         this.grids[14] = 0;
@@ -2670,12 +2664,7 @@ export class AppComponent {
     }
 
     //if 1x1 & 2x1 & 3x1 & 4x1 is true
-    else if (
-      this.grids[7] &&
-      this.grids[6] &&
-      this.grids[5] &&
-      this.grids[4]
-    ) {
+    else if (this.grids[7] && this.grids[6] && this.grids[5] && this.grids[4]) {
       if (this.grids[7] == this.grids[6] && this.grids[5] == this.grids[4]) {
         this.grids[4] += this.grids[5];
         this.grids[5] = this.grids[6] + this.grids[7];
@@ -2942,12 +2931,7 @@ export class AppComponent {
     }
 
     //if 1x1 & 2x1 & 3x1 & 4x1 is true
-    else if (
-      this.grids[3] &&
-      this.grids[2] &&
-      this.grids[1] &&
-      this.grids[0]
-    ) {
+    else if (this.grids[3] && this.grids[2] && this.grids[1] && this.grids[0]) {
       if (this.grids[3] == this.grids[2] && this.grids[1] == this.grids[0]) {
         this.grids[0] += this.grids[1];
         this.grids[1] = this.grids[2] + this.grids[3];
@@ -3145,14 +3129,23 @@ export class AppComponent {
         this.grids[1] = 0;
       }
     }
+    this.getNumber();
+
     // =========================================== 3x1 is true =====================================Bottom
   }
 
   @HostListener('document:keydown.arrowRight', ['$event'])
   onKeyRight(event: KeyboardEvent) {
+    this.gridSaver = [...this.grids];
+
     // =========================================== 1x1 is true =====================================Head
     //if only 1x1 is true
-    if (this.grids[12] && !this.grids[13] && !this.grids[14] && !this.grids[15]) {
+    if (
+      this.grids[12] &&
+      !this.grids[13] &&
+      !this.grids[14] &&
+      !this.grids[15]
+    ) {
       this.grids[15] = this.grids[12];
       this.grids[12] = 0;
     }
@@ -3200,7 +3193,10 @@ export class AppComponent {
       this.grids[14] &&
       this.grids[15]
     ) {
-      if (this.grids[12] == this.grids[13] && this.grids[14] == this.grids[15]) {
+      if (
+        this.grids[12] == this.grids[13] &&
+        this.grids[14] == this.grids[15]
+      ) {
         this.grids[15] += this.grids[14];
         this.grids[14] = this.grids[13] + this.grids[12];
         this.grids[13] = 0;
@@ -3704,12 +3700,7 @@ export class AppComponent {
     }
 
     //if 1x1 & 2x1 & 3x1 & 4x1 is true
-    else if (
-      this.grids[4] &&
-      this.grids[5] &&
-      this.grids[6] &&
-      this.grids[7]
-    ) {
+    else if (this.grids[4] && this.grids[5] && this.grids[6] && this.grids[7]) {
       if (this.grids[4] == this.grids[5] && this.grids[6] == this.grids[7]) {
         this.grids[7] += this.grids[6];
         this.grids[6] = this.grids[5] + this.grids[4];
@@ -3976,12 +3967,7 @@ export class AppComponent {
     }
 
     //if 1x1 & 2x1 & 3x1 & 4x1 is true
-    else if (
-      this.grids[0] &&
-      this.grids[1] &&
-      this.grids[2] &&
-      this.grids[3]
-    ) {
+    else if (this.grids[0] && this.grids[1] && this.grids[2] && this.grids[3]) {
       if (this.grids[0] == this.grids[1] && this.grids[2] == this.grids[3]) {
         this.grids[3] += this.grids[2];
         this.grids[2] = this.grids[1] + this.grids[0];
@@ -4179,8 +4165,38 @@ export class AppComponent {
         this.grids[2] = 0;
       }
     }
+    this.getNumber();
+
     // =========================================== 3x1 is true =====================================Bottom
   }
 
-  
+  getNumber() {
+    let counter = [];
+    let ranNumb = 0;
+    let dropNumb = Math.floor(Math.random() * 10);
+    let switcher = 0;
+    for (let i = 0; i < this.gridSaver.length; i++) {
+      if (this.grids[i] != this.gridSaver[i]) {
+        switcher++;
+      }
+    }
+    if (switcher) {
+      for (let i = 0; i < this.grids.length; i++) {
+        if (!this.grids[i]) {
+          counter.push(i);
+        }
+      }
+      ranNumb = Math.floor(Math.random() * counter.length);
+      if (dropNumb % 3 == 0) {
+        this.grids[ranNumb] = 4;
+      } else {
+        this.grids[ranNumb] = 2;
+      }
+    }
+  }
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+
 }
